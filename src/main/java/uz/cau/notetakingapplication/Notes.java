@@ -7,6 +7,7 @@ import lombok.Data;
 @Data
 @AllArgsConstructor
 public class Notes {
+    private Integer id;
     private String title;
     private String description;
     private int priority;

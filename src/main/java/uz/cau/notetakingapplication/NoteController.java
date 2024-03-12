@@ -1,28 +1,39 @@
 package uz.cau.notetakingapplication;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 @RestController
 @RequestMapping("api/v1/notes/")
 public class NoteController {
 
 
-    @GetMapping("get-notes/{noteId}")
-    public ModelSuccess getAllNotes(
-            @PathVariable(name = "noteId") String noteId
+    List<Notes> notes = new ArrayList<>();
+
+    @PostMapping("post-note")
+    public ModelSuccess postNotes(
+            @RequestBody Notes body
     ){
-        List<Notes> notes = new ArrayList<>();
-        notes.add( new Notes("Hello", "This is description", 1, "12-12-2-2024"));
-        notes.add( new Notes("Hello", "This is description", 1, "12-12-2-2024"));
-        notes.add( new Notes("Hello", "This is description", 1, "12-12-2-2024"));
-        notes.add( new Notes("Hello", "This is description", 1, "12-12-2-2024"));
+        notes.add(body);
+
+        return new ModelSuccess(true, "Successfully saved", null);
+    }
+
+    @GetMapping("get-notes")
+    public ModelSuccess getAllNotes(){
         return new ModelSuccess(true, "Successfully fetched", notes);
+    }
+
+    @DeleteMapping("delete-note/{noteId}")
+    public String deleteNotes(
+            @PathVariable(name = "noteId") Integer noteId
+    ){
+
+        notes.removeIf(notes1 -> Objects.equals(notes1.getId(), noteId));
+        return "Deleted";
     }
 
 

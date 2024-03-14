@@ -1,12 +1,12 @@
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/cau_demo
+    url: jdbc:postgresql://localhost:5432/{database_name}
     username: postgres
-    password: 123456
+    password: your_password
     driver-class-name: org.postgresql.Driver
   jpa:
     hibernate:
-      ddl-auto: update
+      ddl-auto: create-drop
     show-sql: true
     properties:
       hibernate:

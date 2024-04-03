@@ -16,5 +16,4 @@ public class NoteDTO {
     private String description;
     private int priority;
     private String time;
-
 }

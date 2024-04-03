@@ -3,10 +3,6 @@ package uz.cau.notetakingapplication;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
-
 @RestController
 @AllArgsConstructor
 @RequestMapping("api/v1/notes/")

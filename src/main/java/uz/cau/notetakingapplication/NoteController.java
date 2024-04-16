@@ -30,7 +30,7 @@ public class NoteController {
     public String deleteNotes(
             @PathVariable(name = "noteId") Integer noteId
     ){
-        return ;
+        return noteService.deleteNote(noteId);
     }
 
 

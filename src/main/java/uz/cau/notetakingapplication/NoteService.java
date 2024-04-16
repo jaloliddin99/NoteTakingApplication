@@ -15,8 +15,8 @@ public class NoteService {
                 .title(body.getTitle())
                 .description(body.getDescription())
                 .priority(body.getPriority())
-                .time(body.getTime())
                 .build();
+
         noteRepository.save(note);
     }
 
@@ -25,5 +25,11 @@ public class NoteService {
                 "Successfully fetched",
                 noteRepository.findAll()
         );
+    }
+
+    public String deleteNote(Integer noteId) {
+
+        noteRepository.deleteById(noteId);
+        return "Successfully deleted";
     }
 }

@@ -14,5 +14,5 @@ import lombok.NoArgsConstructor;
 public class NoteDTO {
     private String title;
     private String description;
-    private int priority;
+    private Integer priority;
 }

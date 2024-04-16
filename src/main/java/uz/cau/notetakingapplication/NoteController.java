@@ -18,6 +18,15 @@ public class NoteController {
         return noteService.saveNote(body);
     }
 
+    @PostMapping("update-note/{noteId}")
+    public ModelSuccess updateNotes(
+            @RequestBody NoteDTO body,
+            @PathVariable(name = "noteId") Integer noteId
+    ){
+        return noteService.updateNote(body, noteId);
+    }
+
+
 
     @GetMapping("get-notes")
     public ModelSuccess getAllNotes(){

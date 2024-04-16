@@ -41,4 +41,28 @@ public class NoteService {
         return new ModelSuccess(true, "Successfully deleted", null);
 
     }
+
+    public ModelSuccess updateNote(NoteDTO body, Integer noteId) {
+
+        Optional<Notes> notesOptional = noteRepository.findById(noteId);
+        if (notesOptional.isEmpty()){
+            return new ModelSuccess(false, "Note which associated with this "+ noteId +" id is not present in db", null);
+        }
+        Notes note = notesOptional.get();
+
+        if (body.getDescription() != null){
+            note.setDescription(body.getDescription());
+        }
+
+        if (body.getPriority() != null){
+            note.setPriority(body.getPriority());
+        }
+        if (body.getTitle() != null){
+            note.setTitle(body.getTitle());
+        }
+        noteRepository.save(note);
+        return  new ModelSuccess(true, "Successfully updated", null);
+
+
+    }
 }

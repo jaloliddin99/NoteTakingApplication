@@ -15,9 +15,7 @@ public class NoteController {
     public ModelSuccess postNotes(
             @RequestBody NoteDTO body
     ){
-
-        noteService.saveNote(body);
-        return new ModelSuccess(true, "Successfully saved", null);
+        return noteService.saveNote(body);
     }
 
 
@@ -27,7 +25,7 @@ public class NoteController {
     }
 
     @DeleteMapping("delete-note/{noteId}")
-    public String deleteNotes(
+    public ModelSuccess deleteNotes(
             @PathVariable(name = "noteId") Integer noteId
     ){
         return noteService.deleteNote(noteId);

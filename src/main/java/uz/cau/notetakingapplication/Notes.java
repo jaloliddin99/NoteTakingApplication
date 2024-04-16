@@ -23,8 +23,6 @@ public class Notes {
     private String title;
     private String description;
     private int priority;
-
-
     @CreationTimestamp
     private LocalDateTime created_time;
 
